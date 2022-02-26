@@ -1,6 +1,6 @@
 /*
 *	2022-02-26 Saturday
-*	¹è¿­ ±â¹İ Stack ±¸ÇöÀ» À§ÇÑ ÄÚµå
+*	ë°°ì—´ ê¸°ë°˜ Stack êµ¬í˜„ì„ ìœ„í•œ ì½”ë“œ
 */
 
 #include <stdio.h>
@@ -8,12 +8,12 @@
 
 void StackInit(Stack* pstack)
 {
-	pstack->topIndex = -1;		// -1ÀÏ¶§´Â ºó »óÅÂ
+	pstack->topIndex = -1;		// -1ì¼ë•ŒëŠ” ë¹ˆ ìƒíƒœ
 }
 
 int SIsEmpty(Stack* pstack)
 {
-	if (pstack->topIndex == -1) // ½ºÅÃÀÌ ºñ¾úÀ½
+	if (pstack->topIndex == -1) // ìŠ¤íƒì´ ë¹„ì—ˆìŒ
 		return TRUE;
 	else
 		return FALSE;
@@ -22,8 +22,8 @@ int SIsEmpty(Stack* pstack)
 
 void SPush(Stack* pstack, Data data) // Push
 {
-	pstack->topIndex += 1; // topÀ» ÇÏ³ª ¿Ã·ÁÁÖ°í
-	pstack->stackArr[pstack->topIndex] = data; // µ¥ÀÌÅÍ ÀúÀå
+	pstack->topIndex += 1; // topì„ í•˜ë‚˜ ì˜¬ë ¤ì£¼ê³ 
+	pstack->stackArr[pstack->topIndex] = data; // ë°ì´í„° ì €ì¥
 }
 
 Data SPop(Stack* pstack) // Pop
@@ -36,10 +36,10 @@ Data SPop(Stack* pstack) // Pop
 		exit(-1);
 	}
 
-	rIdx = pstack->topIndex; // »èÁ¦ÇÒ µ¥ÀÌÅÍÀÇ ÀÎµ¦½º¸¦ ÀúÀåÇÏ°í
-	pstack->topIndex -= 1; // topÀ» ÇÏ³ª ³»·ÁÁÖ°í
+	rIdx = pstack->topIndex; // ì‚­ì œí•  ë°ì´í„°ì˜ ì¸ë±ìŠ¤ë¥¼ ì €ì¥í•˜ê³ 
+	pstack->topIndex -= 1; // topì„ í•˜ë‚˜ ë‚´ë ¤ì£¼ê³ 
 
-	return pstack->stackArr[rIdx]; // »èÁ¦ÇÑ µ¥ÀÌÅÍ ¹İÈ¯(¹è¿­¿¡´Â ³²¾ÆÀÖÀ½)
+	return pstack->stackArr[rIdx]; // ì‚­ì œí•œ ë°ì´í„° ë°˜í™˜(ë°°ì—´ì—ëŠ” ë‚¨ì•„ìˆìŒ)
 }
 
 Data SPeek(Stack* pstack) // Peek
@@ -50,5 +50,5 @@ Data SPeek(Stack* pstack) // Peek
 		exit(-1);
 	}
 
-	return pstack->stackArr[pstack->topIndex]; // °¡Àå À§ÀÇ µ­ÅÍ ¹İÈ¯
+	return pstack->stackArr[pstack->topIndex]; // ê°€ì¥ ìœ„ì˜ í„° ë°˜í™˜
 }

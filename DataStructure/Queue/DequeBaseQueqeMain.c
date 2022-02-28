@@ -1,3 +1,8 @@
+/*	윤성우의 열혈 자료구조(윤성우 저)
+	2022-02-28 Monday
+	덱(Queue)으로 구현한 큐(Queqe)를 활용하는 main
+*/
+
 #include <stdio.h>
 #include "DequeBaseQueue.h"
 

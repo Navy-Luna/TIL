@@ -1,5 +1,5 @@
-/* 2020110249 À±ÁÖ¿µ
-   º»ÀÎÀº ÀÌ ¼Ò½ºÆÄÀÏÀ» ´Ù¸¥ »ç¶÷ÀÇ ¼Ò½º¸¦ º¹»çÇÏÁö ¾Ê°í Á÷Á¢ ÀÛ¼ºÇÏ¿´½À´Ï´Ù.
+/* 2020110249 ìœ¤ì£¼ì˜
+   ë³¸ì¸ì€ ì´ ì†ŒìŠ¤íŒŒì¼ì„ ë‹¤ë¥¸ ì‚¬ëŒì˜ ì†ŒìŠ¤ë¥¼ ë³µì‚¬í•˜ì§€ ì•Šê³  ì§ì ‘ ì‘ì„±í•˜ì˜€ìŠµë‹ˆë‹¤.
 */
 
 #define _CRT_SECURE_NO_WARNINGS
@@ -58,13 +58,13 @@ void inputPoly(char* fname, int* startA, int* finishA, int* startB, int* finishB
 	fscanf(fp, "%d", finishB);
 	*finishB = *finishA + *finishB;
 
-	for (int i = *startA; i <= *finishA; i++) // ´ÙÇ×½Ä A ÀĞ±â
+	for (int i = *startA; i <= *finishA; i++) // ë‹¤í•­ì‹ A ì½ê¸°
 	{
 		fscanf(fp, "%f", &terms[i].coef);
 		fscanf(fp, "%d", &terms[i].exp);
 	}
 
-	for (int i = *startB; i <= *finishB; i++) // ´ÙÇ×½Ä B ÀĞ±â
+	for (int i = *startB; i <= *finishB; i++) // ë‹¤í•­ì‹ B ì½ê¸°
 	{
 		fscanf(fp, "%f", &terms[i].coef);
 		fscanf(fp, "%d", &terms[i].exp);
@@ -76,7 +76,7 @@ void inputPoly(char* fname, int* startA, int* finishA, int* startB, int* finishB
 	fclose(fp);
 }
 
-void printPoly(int start, int finish) // ÇÏ³ªÀÇ ´ÙÇ×½ÄÀ» Àü´Ş¹Ş¾Æ È­¸éÀ¸·Î Ãâ·Â
+void printPoly(int start, int finish) // í•˜ë‚˜ì˜ ë‹¤í•­ì‹ì„ ì „ë‹¬ë°›ì•„ í™”ë©´ìœ¼ë¡œ ì¶œë ¥
 {
 		for (int i = start; i < finish; i++)
 		{

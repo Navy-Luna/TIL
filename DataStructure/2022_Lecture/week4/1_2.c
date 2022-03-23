@@ -1,5 +1,5 @@
-/* 2020110249 À±ÁÖ¿µ
-   º»ÀÎÀº ÀÌ ¼Ò½ºÆÄÀÏÀ» ´Ù¸¥ »ç¶÷ÀÇ ¼Ò½º¸¦ º¹»çÇÏÁö ¾Ê°í Á÷Á¢ ÀÛ¼ºÇÏ¿´½À´Ï´Ù.
+/* 2020110249 ìœ¤ì£¼ì˜
+   ë³¸ì¸ì€ ì´ ì†ŒìŠ¤íŒŒì¼ì„ ë‹¤ë¥¸ ì‚¬ëžŒì˜ ì†ŒìŠ¤ë¥¼ ë³µì‚¬í•˜ì§€ ì•Šê³  ì§ì ‘ ìž‘ì„±í•˜ì˜€ìŠµë‹ˆë‹¤.
 */
 
 #define _CRT_SECURE_NO_WARNINGS
@@ -79,7 +79,7 @@ int main(void)
 		printf("\n");
 	}
 
-	transpose(a, b); // ÀüÄ¡
+	transpose(a, b); // ì „ì¹˜
 
 	printf("\nB\n");
 
@@ -102,7 +102,7 @@ int main(void)
 		printf("\n");
 	}
 
-	// b.txt Ãâ·ÂÇÏ±â
+	// b.txt ì¶œë ¥í•˜ê¸°
 	for (int i = 0; i <= b[0].value; i++)
 	{
 		fprintf(fOut, "%d %d %d\n", b[i].row, b[i].col, b[i].value);

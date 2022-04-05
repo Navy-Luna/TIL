@@ -17,7 +17,8 @@
 [Variable And Pointer] 파일 참고
 
 ## 1.3 Algorithm Specification(알고리즘 상술)
-1. Definitions of Algorithmns(알고리즘의 정의)
+### (1) Definitions of Algorithms(알고리즘의 정의)
+
   알고리즘은 어떤 특정 목적을 달성하기 위한 유한한 명령어의 집합, 일종의 문제해결을 위한 메뉴얼이나 절차, 문제풀이법이라고 보면 된다. 알고리즘에는 따라야할 5가지 조건이 있음
   - input(>=0) : 0개 이상의 input이 들어가야함
   - output(>0) : 1개 이상의 output(결과물)이 나와야한다. - input과는 구별됨
@@ -25,3 +26,110 @@
   - finiteness(유한성) : 유한 개의 명령어가 유한시간 내에 수행되어야한다. 답도 없이 계속 이어지는건 안된다.. Ex) While(1){printf(".")}
   - effectiveness(유효성) : 모든 과정은 실현 가능(검증이 가능)해야만 한다 = 알고리즘의 모든 연산들이 사람이 종이와 연필을 이용해서 유한한 시간안에 정확하게 수행될 수 있을 정도로 단순하여야 한다.
   
+### (2) How to describe an algorithm?(알고리즘의 표현방식)
+  - Use a natural language like English(자연어를 사용한 기술)
+  - Use graphic representations called flowcharts(순서도, 흐름도와 같은 그림)
+
+### (3) Translating a Problem into an Algorithm(문제를 알고리즘으로 바꾸기)
+  #### 1) Selection Sort(선택 정렬)
+  
+  *\<Description of a Problem\>*   
+  1개 이상의 집합으로 이루어진 정수들을 정렬하는 문제(오름차순)  
+  
+  *\<A simple solution\>*   
+  정렬이 안되있는 정수를 중에서 가장 작은 정수를 가져와 정렬된 리스트 바로 다음에 둔다.   
+  
+  i. 배열의 원소 중 최솟값을 찾아 맨 앞에 나둔다.   
+  ii. 두번째 원소를 기준으로 뒤의 배열 요소들과 크기를 비교한다. 만약 두번째 배열 요소보다 작은 수가 나오면 switch   
+  iii. 기준이 되는 위치가 n-1에 도달했을때 종료..
+  
+  <img src="https://user-images.githubusercontent.com/97028605/161677844-ee427e17-a237-4964-aa25-6861f60de749.png" width="400px" height="600px"></img>
+  
+  - 배열 원소 a와 b를 바꾸는 Swap의 구현(function, macro)
+    + __Function__
+    <pre>
+    <code>
+    void swap(int *x, int *y)
+    { /* 배열이 int형이기 때문에 int형 포인터를 선언 */
+        int temp = *x;  // temp는 임시 저장소
+        *x = *y;        // x에 y의 값을 저장
+        *y = temp;      // x에서 temp로 옮겨둔 값을 y에 저장
+    }
+    </code>
+    </pre>
+    
+    + __Macro__
+    <pre>
+    <code>
+    #define SWAP(x,y,t) ( (t)=(x), (x)=(y), (y)=(t) )      // function과 다르게 어떤 data type으로도 가능
+    </code>
+    </pre>
+  
+  > 구현한 코드 : 
+
+ #### 2) Binary Search(이진 탐색)
+  
+  *\<Description of a Problem\>*   
+  1개 이상의 원소로 이루어진 배열(단, 오름차순으로 정렬된 배열!!!!!)에서 특정 숫자를 찾아내야 한다. 
+  
+  *\<A simple solution\>*   
+  찾아가는 범위를 절반씩 좁혀가면서 숫자를 찾아낸다. list[middle]을 활용  
+  
+  i. 배열의 처음과 끝을 first, last 그리고 middle = (first+last)/2로 정의   
+  ii. 찾으려는 숫자와 list[middle]의 숫자크기를 비교   
+  iii. 만약 searchnum == list[middle]이면 종료, searchnum이 더 크면 first = middle+1로 바꾸고 재탐색, 작으면 last = middle-1로 바꾸고 재탐색(오름차순일때..)
+
+
+  <img src="https://user-images.githubusercontent.com/97028605/161685915-02c6cd69-2849-4af4-871c-1c96bcd7232c.png" width="400px" height="300px"></img>
+  
+  - 배열 원소 x와 y를 비교하는 Compare의 구현(function, macro)
+    + __Function__
+    <pre>
+    <code>
+    int compare(int *x, int *y)
+    { /* 배열이 int형이기 때문에 int형 포인터를 선언 */
+        if (x<y) return -1;   // y가 더 크면 음수 반환
+        else if (x==y) return 0;
+        else return 1; // x가 더 크면 양수 반환
+    }
+    </code>
+    </pre>
+    
+    + __Macro__
+    <pre>
+    <code>
+    #define COMPARE(x,y) ( ((x)>(y)) ? 1 : ((x)==(y)) ? 0 : -1  )      // function과 다르게 어떤 data type으로도 가능
+    </code>
+    </pre>
+  
+  > 구현한 코드 : 
+  
+# Additional Study
+## 1. 난수 생성 in C Programming   
+  무작위로 생성되는 수를 "난수"라고 한다. 이런 난수를 C언어에서 만들어내는게 <stdlib.h> 라이브러리에 포함되어있는 rand()함수   
+  1. rand() 함수는 0~32767의 숫자를 만들어냄
+  2. 하지만 프로그램 실행시마다 일정한 숫자를 만들어냄 -> 이를 위해서 사용하는게 srand() 이용하는데 srand는 rand에 특정 시드값을 부여
+  3. srand(숫자).. 만약 더 랜덤한 수를 만들어내고 싶다면 srand(time())을 사용(time 함수는 time.h 라이브러리에 존재)
+  <pre>
+  <code>
+  #include <stdio.h>
+  #include <stdlib.h>
+  #include <time.h>
+  
+  int main()
+  {
+      // srand(10) : seed 값이 10으로 고정된 채 출력
+      // srand(time()) : 시간에 따라 바뀌는 숫자에 의해 랜덤한 숫자 출력
+      
+      for(int i=0; i<10; i++)
+        printf("%d",rand()%10+1);   // rand함수를 이용하여 1~10까지 숫자를 10개 출력
+    
+      return 0;
+  }
+  </code>
+  </pre>
+
+# Reference
+- Horowitz, Shani, & Anderson-Freed, ªFundamentals of data structures in Cª, (2nd edition) Silicon-press
+- 선택정렬 : https://gmlwjd9405.github.io/2018/05/06/algorithm-selection-sort.html
+- 난수생성 : https://yeolco.tistory.com/64

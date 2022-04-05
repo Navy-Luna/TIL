@@ -46,7 +46,7 @@
   <img src="https://user-images.githubusercontent.com/97028605/161677844-ee427e17-a237-4964-aa25-6861f60de749.png" width="400px" height="600px"></img>
   
   - 배열 원소 a와 b를 바꾸는 Swap의 구현(function, macro)
-    + __Function__
+    + __Function__ : 사용할 때 swap(&a,&b)
     <pre>
     <code>
     void swap(int *x, int *y)
@@ -58,7 +58,7 @@
     </code>
     </pre>
     
-    + __Macro__
+    + __Macro__ : 사용할 때 SWAP(a,b,temp) -> ☆ 주소값 안넣어도 알아서 바뀌도록 처리
     <pre>
     <code>
     #define SWAP(x,y,t) ( (t)=(x), (x)=(y), (y)=(t) )      // function과 다르게 어떤 data type으로도 가능
@@ -86,8 +86,8 @@
     + __Function__
     <pre>
     <code>
-    int compare(int *x, int *y)
-    { /* 배열이 int형이기 때문에 int형 포인터를 선언 */
+    int compare(int x, int y)
+    { /* 단순 비교만 하면 되기 때문에 일반 int형 사용 */
         if (x<y) return -1;   // y가 더 크면 음수 반환
         else if (x==y) return 0;
         else return 1; // x가 더 크면 양수 반환

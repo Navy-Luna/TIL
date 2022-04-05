@@ -109,7 +109,7 @@ Data Type(데이터 타입)이란 object의 collection이자 object에 사용할
 모든 programming language는 기본적인 "predefined data types"와 새롭게 정의해서 만드는 "user defined data type"이 존재한다.   
 
 ### ★ Abstract Data Type(ADT)?
-  Data Type인데 거기에 속하는 object나 작동하는 operation이 구체적으로 어떻게 작동하는지에 초점을 두지않고 독립적인 방식으로 정리되는 Data 자료형이다!(특정 Programming Language에 독립적이다!) -> 약간 Object에는 뭐가 있고 operation의 기능에 관해 간단히 설명해 둔 개념서? 설명서? 같은 느낌으로 표현해 둔다.r
+  Data Type인데 거기에 속하는 object나 작동하는 operation이 구체적으로 어떻게 작동하는지에 초점을 두지않고 독립적인 방식으로 정리되는 Data 자료형이다!(특정 Programming Language에 독립적이다!) -> 약간 Object에는 뭐가 있고 operation의 기능에 관해 간단히 설명해 둔 개념서? 설명서? 같은 느낌으로 표현해 둔다.
   
   - ADT의 operation의 종류
     + Creator/Constructor : 지정된 타입에 대한 새로운 인스턴스를 만들어낸다.

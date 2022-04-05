@@ -14,7 +14,7 @@
   + & : the address operator(주소 연산자) - 변수에 붙이면 해당 정보가 저장된 메모리 주소를 확인 가능
   + \* : the dereferencing(or indirection) operator(역참조 주소 연산자) - 주소에 담겨있는 내용물을 확인 가능
 
-[Variable And Pointer] 파일 참고
+[Variable And Pointer][https://github.com/Yn-Jy/TIL/blob/main/DataStructure/2022_Lecture/Ch1_Basic_Concept/VariableAndPointer.c]
 
 ## 1.3 Algorithm Specification(알고리즘 상술)
 ### (1) Definitions of Algorithms(알고리즘의 정의)
@@ -65,7 +65,7 @@
     </code>
     </pre>
   
-  > 구현한 코드 : 
+  > 구현한 코드 : https://github.com/Yn-Jy/TIL/blob/main/DataStructure/2022_Lecture/Ch1_Basic_Concept/SelectionSort.c
 
  #### 2) Binary Search(이진 탐색)
   
@@ -101,11 +101,33 @@
     #define COMPARE(x,y) ( ((x)>(y)) ? 1 : ((x)==(y)) ? 0 : -1  )      // function과 다르게 어떤 data type으로도 가능
     </code>
     </pre>
+
+  > 구현한 코드 : https://github.com/Yn-Jy/TIL/blob/main/DataStructure/2022_Lecture/Ch1_Basic_Concept/BinarySearch.c
   
-  > 구현한 코드 : 
+## 1.4 Data Abstraction   
+Data Type(데이터 타입)이란 object의 collection이자 object에 사용할 수 있는 operation의 연산자 집합이다. (약간 숫자가 집합이면 거기에 쓰는 +,-들..)
+모든 programming language는 기본적인 "predefined data types"와 새롭게 정의해서 만드는 "user defined data type"이 존재한다.   
+
+### ★ Abstract Data Type(ADT)?
+  Data Type인데 거기에 속하는 object나 작동하는 operation이 구체적으로 어떻게 작동하는지에 초점을 두지않고 독립적인 방식으로 정리되는 Data 자료형이다!(특정 Programming Language에 독립적이다!) -> 약간 Object에는 뭐가 있고 operation의 기능에 관해 간단히 설명해 둔 개념서? 설명서? 같은 느낌으로 표현해 둔다.r
   
+  - ADT의 operation의 종류
+    + Creator/Constructor : 지정된 타입에 대한 새로운 인스턴스를 만들어낸다.
+    + Transformers : 기존에 있던 자료형 인스턴스를 활용하여 새로운 인스턴스를 만들어낸다.
+    + Observers/reporters : 인스턴스에 관한 정보들을 제공해준다. 하지만 내부 정보를 변경하는 것은 불가능하다.
+    
+ ### 정리
+  \- Primitive Data Type(implicit operation)
+  \- Abstract Data Type(explicit operation)
+  
+  \- Data Structure(자료구조) = Data Type(데이터 타입) + Storage Structure(저장공간의 구조)
+  \- Program(프로그램) = Data Structure(자료구조) + Algorithm(알고리즘)
+
+-------------------------------------------------------------------------------------------------------------------
+
+
 # Additional Study
-## 1. 난수 생성 in C Programming   
+## 난수 생성 in C Programming   
   무작위로 생성되는 수를 "난수"라고 한다. 이런 난수를 C언어에서 만들어내는게 <stdlib.h> 라이브러리에 포함되어있는 rand()함수   
   1. rand() 함수는 0~32767의 숫자를 만들어냄
   2. 하지만 프로그램 실행시마다 일정한 숫자를 만들어냄 -> 이를 위해서 사용하는게 srand() 이용하는데 srand는 rand에 특정 시드값을 부여

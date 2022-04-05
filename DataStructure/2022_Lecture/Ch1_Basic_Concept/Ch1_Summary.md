@@ -118,9 +118,11 @@ Data Type(데이터 타입)이란 object의 collection이자 object에 사용할
     
  ### 정리
   \- Primitive Data Type(implicit operation)
+  
   \- Abstract Data Type(explicit operation)
   
   \- Data Structure(자료구조) = Data Type(데이터 타입) + Storage Structure(저장공간의 구조)
+  
   \- Program(프로그램) = Data Structure(자료구조) + Algorithm(알고리즘)
 
 -------------------------------------------------------------------------------------------------------------------

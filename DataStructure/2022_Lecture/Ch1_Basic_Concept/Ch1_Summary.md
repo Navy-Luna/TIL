@@ -164,8 +164,46 @@ Sp(I)에서 길이가 n인 배열을 처리할 때, n은 instance characteristic
 ```
  
 ### 1.5.2 Time Complexity
-와 뭐야
+> T(p) = compile time + execution time(Tp)
+  - T(p) : 프로그램 P에 의해 드는 시간
+  - compile time : 다시 컴파일 하지 않는 이상 고정되는 시간
 
+  우리가 관심을 가질 것은 바로 Tp다!! -> 직접적인 execution time을 재는 매우 어렵기때문에 임의로 program step(machine independent 함)의 개념을 사용할 것이다.
+  
+ __☆ Program Step__ : Space complexity때와는 다르게 instance의 characterist과는 무관한 실행시간을 가지는 문법적, 의미론적으로 의미있는 프로그램 segment다!
+  ```c
+    a = 2;          // 1step
+    a = 2*b + 3*c   // 1step
+  ```
+  스탭을 세는 방식 : global variable을 선언을 해서 0으로 초기화한다. 코드 한줄당 하나의 step으로 간주..(단, '의미'있는 명령어만 센다 -- 정의에 따라..)
+  
+  EX1) Tsum = 2n+2
+  ```c
+    float sum(float list[], int n)
+    {
+        float tempsum = 0; count++; // 이때, count는 global variable로 count=0으로 초기화가 된 상태
+        int i;    // 단순 선언은 step으로 간주하지 않는다.
+        for(i=0; i<n; i++)
+         {
+            count++;  // for의 조건확인으로 인한 step
+            tempsum += list[i]; count++;
+         }
+         count++; // 위의 마지막 i<n을 확인하는 과정에서 발생하는 하나의 step
+         count++; return tempsum;   // return에 의해 발생하는 count 
+    }
+ ```
+ Ex2) Tadd = 2row\*col + 2col + 1
+ ```c
+   void add(int a[][MAX_SIZE],  int b[][MAX_SIZE],  int c[][MAX_SIZE],  int rows, int cols)
+   {  /*  헷갈리면 괄호를 쳐서 확인해보자! */
+      int i, j;
+      for (i=0; i<rows; i++)    // 들어가면서 count 1번, 안쪽 for문이 종료되면서 생기는 1번(2rows) & for문 자체가 끝나면서 1번
+        for (j=0; j<cols; j++)    // 들어가면서 count 1번과 c[i][j] 줄을 세면서 1번 이걸 rows\*cols 만큼 발생(2rows\*cols)
+            c[i][j] = a[i][j] + b[i][j];
+   }
+ ```
+  * Three kinds of step count
+    - Best
 -------------------------------------------------------------------------------------------------------------------
 
 

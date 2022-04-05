@@ -47,23 +47,19 @@
   
   - 배열 원소 a와 b를 바꾸는 Swap의 구현(function, macro)
     + __Function__ : 사용할 때 swap(&a,&b)
-    <pre>
-    <code>
+    ```c
     void swap(int *x, int *y)
     { /* 배열이 int형이기 때문에 int형 포인터를 선언 */
         int temp = *x;  // temp는 임시 저장소
         *x = *y;        // x에 y의 값을 저장
         *y = temp;      // x에서 temp로 옮겨둔 값을 y에 저장
     }
-    </code>
-    </pre>
+    ```
     
     + __Macro__ : 사용할 때 SWAP(a,b,temp) -> ☆ 주소값 안넣어도 알아서 바뀌도록 처리
-    <pre>
-    <code>
+    ```c
     #define SWAP(x,y,t) ( (t)=(x), (x)=(y), (y)=(t) )      // function과 다르게 어떤 data type으로도 가능
-    </code>
-    </pre>
+    ```
   
   > 구현한 코드 : https://github.com/Yn-Jy/TIL/blob/main/DataStructure/2022_Lecture/Ch1_Basic_Concept/SelectionSort.c
 
@@ -84,23 +80,19 @@
   
   - 배열 원소 x와 y를 비교하는 Compare의 구현(function, macro)
     + __Function__
-    <pre>
-    <code>
+    ```c
     int compare(int x, int y)
     { /* 단순 비교만 하면 되기 때문에 일반 int형 사용 */
         if (x<y) return -1;   // y가 더 크면 음수 반환
         else if (x==y) return 0;
         else return 1; // x가 더 크면 양수 반환
     }
-    </code>
-    </pre>
+    ```
     
     + __Macro__
-    <pre>
-    <code>
+    ```c
     #define COMPARE(x,y) ( ((x)>(y)) ? 1 : ((x)==(y)) ? 0 : -1  )      // function과 다르게 어떤 data type으로도 가능
-    </code>
-    </pre>
+    ```
 
   > 구현한 코드 : https://github.com/Yn-Jy/TIL/blob/main/DataStructure/2022_Lecture/Ch1_Basic_Concept/BinarySearch.c
   
@@ -117,13 +109,62 @@ Data Type(데이터 타입)이란 object의 collection이자 object에 사용할
     + Observers/reporters : 인스턴스에 관한 정보들을 제공해준다. 하지만 내부 정보를 변경하는 것은 불가능하다.
     
  ### 정리
-  \- Primitive Data Type(implicit operation)
-  
+  \- Primitive Data Type(implicit operation)   
   \- Abstract Data Type(explicit operation)
   
-  \- Data Structure(자료구조) = Data Type(데이터 타입) + Storage Structure(저장공간의 구조)
-  
+  \- Data Structure(자료구조) = Data Type(데이터 타입) + Storage Structure(저장공간의 구조)   
   \- Program(프로그램) = Data Structure(자료구조) + Algorithm(알고리즘)
+  
+-------------------------------------------------------------------------------------------------------------------
+
+## 1.5 Performace Analysis(성능 분석)
+ * Performace Evaluation(성능평가)
+    + Performace Analysis(성능분석 - time과 space로 추정하며 machine independent하다.)
+      - Space Complexity(공간복잡도) : 프로그램이 running 하는데 필요한 메모리 요구량
+      - Time Complexity(시간복잡도) : 프로그램이 running 하는데 필요한 계산 시간 양
+    + Performace measurment(성능측정 - machine dependent하다.)
+    
+ ### 1.5.1 Space Complexity
+ > S(p) = c + Sp(I)
+
+ - S(p) : 프로그램 P의 전체 space 요구량
+ - c : constant하게(고정되게) 요구되는 space 요구량
+ - Sp(I) : 인스턴스 I(예를 들어, 배열)를 처리하며 변화가능한 space 요구량 ~ 인스턴트 I의 I/O와 관련된 number, size, value의 영향을 받는다.   
+
+Sp(I)에서 길이가 n인 배열을 처리할 때, n은 instance characteristic이며 오직 n에만 영향을 받는다면 Sp(n)으로 적을 수도 있다. Sp가 space complexity를 analysis하는데 가장 중요하게 봐야할 부분!
+
+```c
+  // 실행할 때마다 다른 크기의 메모리 용량이 필요한 것이 아니다. 따라서 Sabc(I)=0
+  float abc(float a, float b, float c)
+  {
+     return a+b+b*c+(a+b-c)/(a+b) + 4.00;
+  }
+```
+
+```c
+  // 전달되는 n에 따라 사용하는 용량은 다르겠지만 실행마다 바뀐다는 느낌은 아님! -> 추가 용량 사용이 없음.. Ssum(I) = 0
+  float sum(float list[], int n)
+  {
+     float tempsum = 0;
+     int i;
+     for(int i=0; i<n; i++)
+       tempsum += list[i];
+     return tempsum
+  }
+```
+
+```c
+  /* 아래와 같이 함수가 recursive하게 불려질 때, 컴파일러는 각 recursive call마다 스택 공간에 저장을 해야함! 
+     -> 추가 용량 사용이 n에 따라 변화한다. Srsum(I) > 0 */
+  float rsum(float list[], int n)
+  {
+     if (n) return rsum(list,n-1) + list[n-1];
+     return 0;
+  }
+```
+ 
+### 1.5.2 Time Complexity
+와 뭐야
 
 -------------------------------------------------------------------------------------------------------------------
 
@@ -134,8 +175,7 @@ Data Type(데이터 타입)이란 object의 collection이자 object에 사용할
   1. rand() 함수는 0~32767의 숫자를 만들어냄
   2. 하지만 프로그램 실행시마다 일정한 숫자를 만들어냄 -> 이를 위해서 사용하는게 srand() 이용하는데 srand는 rand에 특정 시드값을 부여
   3. srand(숫자).. 만약 더 랜덤한 수를 만들어내고 싶다면 srand(time())을 사용(time 함수는 time.h 라이브러리에 존재)
-  <pre>
-  <code>
+  ```c
   #include <stdio.h>
   #include <stdlib.h>
   #include <time.h>
@@ -150,8 +190,7 @@ Data Type(데이터 타입)이란 object의 collection이자 object에 사용할
     
       return 0;
   }
-  </code>
-  </pre>
+  ```
 
 # Reference
 - Horowitz, Shani, & Anderson-Freed, ªFundamentals of data structures in Cª, (2nd edition) Silicon-press

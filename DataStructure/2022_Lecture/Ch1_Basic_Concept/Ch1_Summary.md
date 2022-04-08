@@ -203,7 +203,11 @@ Sp(I)에서 길이가 n인 배열을 처리할 때, n은 instance characteristic
    }
  ```
   * Three kinds of step count
-    - Best
+    - Best-case step count : 주어진 parameter를 실행할 때, 최소한의 step 수가 나오는 것이다.
+    - Worst-case step count : 주어진 parameter를 실행할 때, 최대한의 step 수가 나오는 것이다.
+    - Average step count : 주어진 parameter를 실행할 때, 평균적인 step 수가 나오는 것이다.
+
+### Asymptotic Notation (O,Ω,Θ)
 -------------------------------------------------------------------------------------------------------------------
 
 

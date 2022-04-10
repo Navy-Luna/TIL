@@ -207,7 +207,19 @@ Sp(I)에서 길이가 n인 배열을 처리할 때, n은 instance characteristic
     - Worst-case step count : 주어진 parameter를 실행할 때, 최대한의 step 수가 나오는 것이다.
     - Average step count : 주어진 parameter를 실행할 때, 평균적인 step 수가 나오는 것이다.
 
-### Asymptotic Notation (O,Ω,Θ)
+### 1.5.3 Asymptotic Notation (O,Ω,Θ)   
++ Step count를 사용하는 이융 : 두 프로그램의 동일한 함수의 time complexity를 비교하거나 데이터 수와 같은 변화(instance characteristics)에 따라 run time의 변화가 어떻게 되는지 확인하기 위해서이다.
++ However, Step count를 정확하게 재는 것에는 어려움이 있고 Exact step count는 comparative purposes를 위해서는 매우 not useful하다.(step 자체에 대한 정의도 모호)
++ Asymptotic notation (O,Ω,Θ) - 점근적 정의의 사용
+  - 프로그램의 시간과 공간에 대한 complexity에 대한 서술을 meaningful(but inexact)하게 만들어준다.(근사적 방법을 사용하기 때문에 inexact할 수 밖에 없음)
+
+## 1.6 Performace Measurement(성능 측정)
+- 컴퓨터에서의 "실제" 시간 측정 - Machine dependent한 측정
+- 측정을 위해 3가지 타입의 데이터를 사용
+  + worst-case data
+  + best-case data
+  + average-case data
+- Timeing mechanism \- clock(C에서는 clock(), time()을 사용하여 측정한다.)
 -------------------------------------------------------------------------------------------------------------------
 
 

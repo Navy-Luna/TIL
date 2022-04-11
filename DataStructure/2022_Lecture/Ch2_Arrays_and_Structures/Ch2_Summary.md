@@ -101,4 +101,21 @@ malloc을 이용한 동적할당 배열(동적할당의 구현은 앞에서 배�
     int age;
     float salary;
     } humanbeing; // 여기서 humanbeing은 variable이 아니라 자료형을 지칭! -> 위의 내용과 구분하자!
+    
+ /* 구조체 안에 구조체 */
+ typedef struct {
+    int month;
+    int day;
+    int year;
+    } date;
+ typedef struct {
+    char name[10];
+    date dob;	// 이 멤버 변수에 접근하기 위해선 dot(.)를 두번 사용하면 된다.
+    } humanbeing;
+    
+ /* 자기참조 구조체 : 구조체의 정의 안에 구조체 포인터가 정의되어 있는 것 - 연결리스트의 기반이 됨 */
+ typedef struct list {
+ 	char data;
+	struct list *link;
+	}list;
 ```

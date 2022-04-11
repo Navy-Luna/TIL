@@ -119,3 +119,15 @@ malloc을 이용한 동적할당 배열(동적할당의 구현은 앞에서 배�
 	struct list *link;
 	}list;
 ```
+
+## 2.4 Polynomials(다항식)
++ Implementation of Ordered List(순서가 있는 리스트의 구현)
+  - Array(정적 배열)
+    * list의 element와 index를 짝지어 놓은 것
+    * sequental mapping(순차적 매핑)
+    * item을 찾거나 대체하거나 배열의 길이를 찾는 과정 등등이 일정한 시간(constant time)이 든다. -> 주소계산이 쉽게되기 때문이다!
+    * 삽입과 삭제에서 문제가 생길 수 있음 : item들을 move하는 과정이 필요하기 때문!
+  - Linked List(동적 배열)
+    * Non-sequential mapping(비순차적 매핑)
+    * Chapter4의 내용을 참고!
+

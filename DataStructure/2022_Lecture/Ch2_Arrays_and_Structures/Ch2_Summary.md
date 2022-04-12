@@ -173,3 +173,57 @@ malloc을 이용한 동적할당 배열(동적할당의 구현은 앞에서 배�
 
 위에 대한 자세한 내용은 [DS05 1.c](https://github.com/Yn-Jy/TIL/blob/main/DataStructure/2022_Lecture/Ch2_Arrays_and_Structures/DS%2005/1.c) 내용을 참고
 
+## 2.5 Sparse Matrix(희소행렬)
+m\*n의 행렬에서 0의 개수가 많은(비어있는) 행렬을 희소행렬이라고 한다. 희소행렬의 표현은 <row, col, value>의 3-triple형태로 표현됨
+```c
+  define MAX_TERMS 101 // 최대 숫자개수보다 하나 더 공간을 마련
+  typedef struct
+  {
+    int row;
+    int col;
+    int value;
+  }term;
+  term a[MAX_TERMS]; // 구조체 배열을 선언 -> 대부분의 행렬이 비어있기 때문에 비어있지 않은 행렬을 기록한다.
+```
+![IMG_0783](https://user-images.githubusercontent.com/97028605/162862160-cb30c156-1426-4c74-923e-5a454eb36986.PNG)
+
+- 첫번째에는 행의 갯수, 열의 갯수, 값이 들어있는 항의 개수에 대한 정보를 기록함
+- 행 우선으로 저장(row major ordering)
+
+### Transpoing a Matrix(전치행렬 만들기)
+__알고리즘 1__  
+```
+    for each row i of original matrix   
+      take element <i, j, value> and store it   
+      as element <j, i, value> of the transpose;
+```
+행과 열을 숫자를 바꿔서 row major ordering에 맞게 재정렬해준다. 하지만 element의 move가 많이 발생할 수 있기때문에 overhead가 커질 수 있음! 그래서 알고리즘2와 같은 방법을 사용해 볼 생각임
+
+__알고리즘 2__
+```
+    for all elements in column j of origianl matrix
+      place element <i, j, value> in
+      element <j, i, value> of the transpose
+```
+column에 대해서 모두 scan을 해서 작은 행부터 찾아 다른 행렬에 저장을 한다. 모든 column index에 대한 탐색시간 overhead가 발생할 수 있다.   
+알고리즘2에 대한 자세한 내용은 DS05 2.c 를 참고
+
++ Analysis of transpose
+  - loop에 의해 처리시간이 결정된다.
+  - 나머지는 constant time이 소모됨
+  - Time complexity : O(columns\*elements) -> Sparse Matrix가 아니라 꽉 차있다면 소요시간이 column^2\*elements정도로 늘어난다.
+  - 경우에 따라서는 2D array형태로 처리하는게 더 빠를 수 있음
+
+__★ 알고리즘 3 : Fast Transpose of a sparse matrix__
+
+<img src="https://user-images.githubusercontent.com/97028605/162870334-d7bc9002-23c3-40c7-845b-8247b9921973.PNG" weight=800px height = 600px></img>   
+위와 같이 희소행렬이 전치했을때의 행렬의 행에 해당하는 index들과 그 개수들을 기록하는 배열이 존재한다!   
+startingPosition은 이 전 index의 startingPosition과 index의 갯수를 지칭하는 rowTerm의 합으로 이루어진다.(탐색이 진행될 수록 기록하는 행렬을 업데이트!)   
+알고리즘3에 대한 자세한 내용은 DS05 3.c 를 참고
+
++ Analysis of fastTranspose
+  - 네 번의 loop에 의한 시간
+  - loop안의 내용들에 대해서는 constant time이 소요됨
+  - Time complexity : O(columns+elements) -> 이때, elements=columns\*rows라면 2D Array와 처리 시간이 같아짐
+  - 하지만 element < colums\*rows라면 더 적은 시간이 소요된다.
+  - fastTranspose 알고리즘은 공간과 시간을 절약하기에 매우 좋은 선택!

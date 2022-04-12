@@ -43,7 +43,7 @@
 + Sequential representation(1D Array를 활용)
 + Circular representation : Circular Queue(1D Array를 활용, 선형큐보다 더 효율적)
 
-1. Sequential Representation(DS07 2.c)
+1. Sequential Representation([DS07 2.c](https://github.com/Yn-Jy/TIL/blob/main/DataStructure/2022_Lecture/Ch3_Stacks_and_Queues/DS%2006-07/2.c))
 ```c
   #define MAX_QUEUE_SIZE 100
   typedef struct
@@ -57,7 +57,7 @@
 선형큐에서 rear가 맨뒤에 도달하고 더이상 front가 일어나지 않는 상황 -> 추가로 push가 일어날 경우, 공간 확보를 위해 shift로 인한 time consuming이 발생할 수 있다.
 발생할 수 있는 worst time complexity는 O(MAX_QUEUE_SIZE)
 
-2. Circular Queue(DS07 3.c)
+2. Circular Queue([DS07 3.c](https://github.com/Yn-Jy/TIL/blob/main/DataStructure/2022_Lecture/Ch3_Stacks_and_Queues/DS%2006-07/3.c))
 - front는 첫번째 원소로부터 반시계방향으로 한칸 위치
 - rear는 마지막 element를 가리킨다.
 - 하지만 empty와 full를 구분하는 상황에서 문제가 발생할 수 있다.

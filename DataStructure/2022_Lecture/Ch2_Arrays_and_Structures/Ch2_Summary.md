@@ -206,7 +206,7 @@ __알고리즘 2__
       element <j, i, value> of the transpose
 ```
 column에 대해서 모두 scan을 해서 작은 행부터 찾아 다른 행렬에 저장을 한다. 모든 column index에 대한 탐색시간 overhead가 발생할 수 있다.   
-알고리즘2에 대한 자세한 내용은 DS05 2.c 를 참고
+알고리즘2에 대한 자세한 내용은 [DS05 2.c](https://github.com/Yn-Jy/TIL/blob/main/DataStructure/2022_Lecture/Ch2_Arrays_and_Structures/DS%2005/2.c)를 참고
 
 + Analysis of transpose
   - loop에 의해 처리시간이 결정된다.
@@ -219,7 +219,7 @@ __★ 알고리즘 3 : Fast Transpose of a sparse matrix__
 <img src="https://user-images.githubusercontent.com/97028605/162870334-d7bc9002-23c3-40c7-845b-8247b9921973.PNG" weight=800px height = 600px></img>   
 위와 같이 희소행렬이 전치했을때의 행렬의 행에 해당하는 index들과 그 개수들을 기록하는 배열이 존재한다!   
 startingPosition은 이 전 index의 startingPosition과 index의 갯수를 지칭하는 rowTerm의 합으로 이루어진다.(탐색이 진행될 수록 기록하는 행렬을 업데이트!)   
-알고리즘3에 대한 자세한 내용은 DS05 3.c 를 참고
+알고리즘3에 대한 자세한 내용은 [DS05 3.c](https://github.com/Yn-Jy/TIL/blob/main/DataStructure/2022_Lecture/Ch2_Arrays_and_Structures/DS%2005/3.c)를 참고
 
 + Analysis of fastTranspose
   - 네 번의 loop에 의한 시간

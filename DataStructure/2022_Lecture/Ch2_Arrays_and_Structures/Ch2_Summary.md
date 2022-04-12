@@ -227,3 +227,7 @@ startingPosition은 이 전 index의 startingPosition과 index의 갯수를 지�
   - Time complexity : O(columns+elements) -> 이때, elements=columns\*rows라면 2D Array와 처리 시간이 같아짐
   - 하지만 element < colums\*rows라면 더 적은 시간이 소요된다.
   - fastTranspose 알고리즘은 공간과 시간을 절약하기에 매우 좋은 선택!
+
+-----------------------------------------------------------------------
+# Reference
+- Horowitz, Shani, & Anderson-Freed, ªFundamentals of data structures in Cª, (2nd edition) Silicon-press

@@ -131,3 +131,45 @@ malloc을 이용한 동적할당 배열(동적할당의 구현은 앞에서 배�
     * Non-sequential mapping(비순차적 매핑)
     * Chapter4의 내용을 참고!
 
+### A Problem Requiring Ordered Lists
+- Manipulation of symbolic polynomails(다항식의 조작) : (Ex) A(x) = 3x^20+5x^5+4 / B(x) = x^4+10x^3+3x^2+1
+- degree : 최고차항
+- assumption : 내림차순으로 중복된 차수의 항은 존재하지 않는다고 생각
+
+### ☆ Polynomial Addition(다항식 더하기의 구현)
+1. 두항을 최고차항을 비교하여 같은지를 본다.
+2.1 두항이 같은 경우에 두 항의 계수를 더하고 C(x)에 옮겨준다. - 단, 합이 0이면 옮기지 않는다.
+2.2 두항 중 하나가 더 클 경우 더 큰 항을 C(x)로 옮겨준다.
+3. 1~2.2 과정을 반복
+4. 남은 항들을 모두 C(x)로 옮겨준다.
+```c
+  #define MAX_DEGREE 101
+  /* 다항식의 구현은 구조체를 사용 */
+  
+  // 구현 방법1
+  typedef struct
+  {
+    float coef[MAX_DEGREE]
+    int degree; // 최고차항의 차수
+  }
+```
+최고차항이 너무 크면 계수=0인 항들이 너무나도 많아지게 된다. (Ex) 2x^1000+2x^2+1   
+최고차항이 너무 작으면 그만큼 안쓰는 배열 공간이 너무 많아짐(정적배열을 사용하기 때문) (Ex) x^3+1
+```c
+  #define MAX_TERMS 100
+  
+  // 구현 방법2
+  typedef struct
+  {
+    float coef;
+    int expo;
+  }term;
+
+  // 하나의 배열을 사용하여 다항식 더하기를 구현
+  term terms[MAX_TERMS];
+  int avail = 0; // 더하기 결과값을 저장할 수 있는 시작 공간
+```
+<img src="https://user-images.githubusercontent.com/97028605/162855224-c1bb3d3a-8312-4e0d-8848-5d844def3d6c.PNG" weight=300px height=500px></img>
+
+위에 대한 자세한 내용은 DS05 1.c 내용을 참고
+

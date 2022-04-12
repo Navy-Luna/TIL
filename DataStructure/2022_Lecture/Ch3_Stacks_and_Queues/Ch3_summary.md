@@ -111,8 +111,61 @@
   }element;
 ```
 - 모든 지역을 방문했다고 했을때..(m\*p maze) worst case에 의한 time complexity는 O(mp)
-- 최종적인 maze에 대한 구현은 DS08을 참고
-__________________________________________________________________________________
+- 최종적인 maze에 대한 구현은 [DS08](https://github.com/Yn-Jy/TIL/blob/main/DataStructure/2022_Lecture/Ch3_Stacks_and_Queues/DS%2008/1.c)을 참고
+
+## 3.6 Evaluation of Expressions
+### 3.6.1 Expressions(수식)
+- Complex expressions(복잡한 수식)
+  - Ex) ((rear+1)===front || ((rear==MAX_QUEUE_SIZE-1) && !front))
+  - operators(연산자), operands(피연산자), parentheses(괄호)
+### 3.6.2 Evaluating Postfix Expression(후위 연산식의 계산)
+- Infix notation(중위 표현식)
+  - 연산자가 피연산자 중간에 위치 (ex) 3+2/7
+- Prefix notation(전위 연산식)
+  - 연산자가 피연산자 앞에 위치 (ex) +-725
+- Postfix notation(후위 연산식)
+  - 연산자가 피연산자 뒤에 위치 (ex) 572-+
+  - 컴파일러가 이용함
+  - 괄호(parentheses)로부터 free한 notation이다.
+  - 연산을 위해서 왼쪽부터 오른쪽으로 스캔을 한다.
+  - Stack을 사용
+
+후위 연산식의 계산에 앞서 가정은 2가지이다. 하나는 Binary operation을 +,-,\*,/,% 만 있다고 가정하고 single digit integer이라고 생각하고 풀이
+```c
+#define MAX_STACK_SIZE 100 // maximum stack size
+#define MAX_EXPR_SIZE 100  // max size of expression
+
+typedef enum {lparen, rparen, plus, minus, times, divide, mod, eos, operand} precedence; // 각각의 연산자를 미리 정의
+
+int stack[MAX_STACK_SIZE];  // global stack
+int expr[MAX_EXPR_SIZE];    // global input string(후위 연산식을 가정)
+```
+
+### 3.6.3 Infix to Prefix(중위 연산식을 후위 연산식으로 변환)
+__알고르즘1 : 직접 손으로 해보는 경우__
+1. Fully parenthesize the expression(괄호를 다 쳐라)
+2. Move all binary operators so that they replace their corresponding right parentheses.(제일 가까운 괄호의 오른쪽으로 이동)
+3. Delete all parentheses.(모든 괄호 없애기)   
+-> computer의 입장에서 두번의 passes가 발생하기 때문에 비효율적이다.
+
+__알고리즘2 : 프로그래밍__
+1. 피연산자의 경우 그대로 다른 문자열 배열로 옮기면 됨
+2. 연산자가 들어오는 경우 stack에 push
+3. 만약 stack에 연산자가 들어올때 stack의 top에 위치한 연산자의 우선순위가 높거나 같으면 먼저 pop들을 시킴(연산자가 낮은게 나올때까지)
+4. 왼쪽 괄호가 나온뒤에 오른쪽 괄호가 나올때까지 pop하지 않음..(중요한 것은 (가 들어갈때 우선순위는 제일 높은데 stack 안에서는 우선순위가 제일 낮음!!!!!!)
+5. 오른쪽 괄호는 stack에 절대 들어가지 않음(괜히 넣으면 비효율적임)
+```c
+  /* 연산자의 우선순위를 정하는 배열 : 왼쪽괄호 처리를 위해 만든다 */
+  precedence stack[MAX_STACK_SIZE]
+  
+  /* isp(stack안에서의 우선순위) and icp(들어올 때 우선순위) arrays - index is the value of precedence
+    lparen, rparen, plus, minus, times, divide, mod, or eos */
+    
+    static int isp[] = { 0, 19, 12, 12, 13, 13, 13, 0 }; // 눈여겨 볼 점은 lparen의 우선순위 차이와 eos, rparen의 우선순위
+    static int icp[] = { 20, 19, 12, 12, 13, 13, 13, 0};
+```
+
+_______________________________________________________________________________________________________
 # Additional Study
 ## strtok, sscanf, strcmp
 ```c

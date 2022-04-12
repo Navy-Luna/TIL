@@ -171,5 +171,5 @@ malloc을 이용한 동적할당 배열(동적할당의 구현은 앞에서 배�
 ```
 <img src="https://user-images.githubusercontent.com/97028605/162855224-c1bb3d3a-8312-4e0d-8848-5d844def3d6c.PNG" weight=300px height=500px></img>
 
-위에 대한 자세한 내용은 DS05 1.c 내용을 참고
+위에 대한 자세한 내용은 [DS05 1.c](https://github.com/Yn-Jy/TIL/blob/main/DataStructure/2022_Lecture/Ch2_Arrays_and_Structures/DS%2005/1.c) 내용을 참고
 

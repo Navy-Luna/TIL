@@ -92,7 +92,26 @@ __List Deletion__
 <img src="https://user-images.githubusercontent.com/97028605/163160684-fb450f67-9826-4087-8c4c-d0ead45e143b.PNG" width="500px" height="400px"></img>
 
 ## 4.4 Polynomials
-앞에서 배운 정적/동적 배열을 사용한 polynomial을 연결리스트로 구현
+앞에서 배운 정적/동적 배열을 사용한 polynomial을 연결리스트로 구현   
+a와 b에 두개의 polynomial을 만들고 최고차항을 앞에서부터 비교..(배열과 방식은 유사) c에 attach함수를 사용하여 새로 만든 다항식을 붙여나감
 ```c
-  
+  typedef struct polyNode *polyPointer;
+  typedef struct polyNode
+  {
+    int coef;  // 계수
+    int expon; // 차수
+    polyPointer link;
+  }polyNode;
+  polyPointer a,b;
 ```
+다항식 list를 구현한 코드는 DS11를 참고(padd & attach 함수에 주목)
+
+- Analysis of padd
+  1. 계수 더하기   
+    다항식 A와 B의 항의 개수가 각각 m과 n개라고 할때, 더하기 횟수는 0<=number of coefficient addition <= min(m,n)
+  2. 차수 비교   
+    while loop가 돌때마다 한번의 comparsion이 발생함! 서로 차수가 모두 다를 경우에 worst하게 m+n번 일어날 수 있다.
+  3. c에 새로운 노드 생성
+    A와 B의 다항식의 차수가 모두 달라서 worst하게 m+n번 삽입이 발생할 수 있음
+  4. 결론
+    O(min(m,n)) + O(m+n) + O(m+n) = O(m+n) : time complexity of padd is O(m+n)

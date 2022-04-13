@@ -126,7 +126,7 @@ a와 b에 두개의 polynomial을 만들고 최고차항을 앞에서부터 비�
   + getNode(asl(=노드풀)의 노드를 주거나 비었으면 새로만듬)와 retNode(안쓰는 노드를 노드풀에 반환)
   + 이게 있으면 circular list를 삭제하는 효율적인 algorithm 구현이 가능함
 
-Circular List를 이용한 polynomial addition 구현 코드는 DS12를 참고!
+Circular List를 이용한 polynomial addition 구현 코드는 [DS12](https://github.com/Yn-Jy/TIL/blob/main/DataStructure/2022_Lecture/Ch4_Linked_Lists/DS%2012/1.c)를 참고!
 
 ## 4.5 Additional List Operation
 ### 4.5.1 Operation For Chains

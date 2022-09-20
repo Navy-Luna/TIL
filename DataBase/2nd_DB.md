@@ -62,3 +62,26 @@
 4) concurrent user and applications가 처리하고 공유헐 수 있도록 돕는다.(단, 모든 데이터가 타당하고 consistent하도록 유지)
 5) 이처럼 정의, 저장, 관리, 다수 유저를 위한 서비스 제공과 같은 다양한 역하릉ㄹ 하는것이 DBMS
 
+### ★ Database Design Phases (데이터베이스를 디자인하는 4가지 Step) [참고링크](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=mmwook94&logNo=221373595289) / [참고링크2](https://iwuooh.com/entry/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%9D%98-%EC%84%A4%EA%B3%84DataBase-Design%EC%9D%98-%EA%B0%9C%EC%9A%94%EC%99%80-%EB%8B%A8%EA%B3%84)
+존재하는 데이터베이스를 위한 새로운 application을 만들거나 새로운 데이터베이스를 만들어내기 위해서는 다음 4개의 stage를 거쳐야한다.
+1. Requirement specification and analysis
+- 요구사항 분석과 구체화
+2. Conceptual design (for easily being transformed into a database implementation)
+- 개념 스키마 모델링
+- 과정요구사항들을 쉽게 데이베이스에 구현하기위해서 직관적이해가 가능한 형태로 표현하기 위한 단계
+- 주로 entity와 그들간의 relation을 표현하기 위해서 entity-relation diagram (ER-Diagram)을 사용하며 ER-Diagram을 이용하여 조직과 사용자들에게 어떠한 데이터들이 중요한지 나타내기위해 사용한다.
+3. Logical design (for a data model implemented in a DBMS)
+- DBMS에 data model을 구현하기 위한 logical design
+- 현실 세계의 데이터를 컴퓨터가 처리할 수 있는 논리적 데이터 구조로 변환
+- 논리 데이터 모델링
+- 개념적 디자인 과정에서 만들어낸 개념적 스키마를 기반으로 개발에 사용될 DBMS에 적합한 논리적 데이터 모델을 모델링하는 과정 -> ER로 그려낸것들을 테이블로 구현해내는 과정... 이라고 보면 되려나?
+- 정규화 과정이 포함됨
+4. Physical design (for storing and accessing the database)
+- 내가 저장하고자하는 데이터가 어떤 방식으로 저장을 할지, 어떻게 저장장치에 저장할것이며 데이터베이스에 접근을 할지와 같은 물리적 설계를 지칭
+- 저장장치에 적합한 저장 레코드와 인덱스 구조와 같은 물리적인 구조를 설계하며 데이터에 접근하기위한 탐색 기법들을 설계
+5. Database apllication development(선택)
+
+## 3. Main Characteristics of the database approach
+### ★ Main Characteristics of the DB Appproach
+(1) "Self-describing" nature of a DB system (자기 서술적 속성을 가지는 DB system): DB system은 DB 그 자체를 의미할 뿐만이 아니라 DB의 structure, types, and contraints 완전한 정의(혹은 서술)을 의미한다.
+- Catalog (카탈로그): 특정 DB에 대한 

@@ -83,5 +83,9 @@
 
 ## 3. Main Characteristics of the database approach
 ### ★ Main Characteristics of the DB Appproach
-(1) "Self-describing" nature of a DB system (자기 서술적 속성을 가지는 DB system): DB system은 DB 그 자체를 의미할 뿐만이 아니라 DB의 structure, types, and contraints 완전한 정의(혹은 서술)을 의미한다.
-- Catalog (카탈로그): 특정 DB에 대한 
+(1) "Self-describing" nature of a DB system (자기 서술적 속성(자기 자신에 대한 정보를 저장하고 관리하는 속성)을 가지는 DB system): DB system은 DB 그 자체를 의미할 뿐만이 아니라 DB의 structure, types, and contraints 완전한 정의(혹은 서술)을 의미한다.
+- Catalog (카탈로그): 특정 DB에 대한 정보들을 기록하고 저장한 것 [참고링크](https://coding-factory.tistory.com/225)   
+  + 하지만 최근에 나온 시스템 (NoSQL: Mongo DB, Cassandra, Radis)의 경우에는 metadata가 필요X: 데이터에대한 정의가 구조 자체에 저장되어있다. 그래서 그것 자체로 self-describing 되어 있음.
+
+(2) Program-data indempendence (프로그램과 데이터간의 Insulation)
+

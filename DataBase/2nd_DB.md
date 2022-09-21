@@ -156,6 +156,6 @@
 - data value와 data에 대한 기술이 함께 이루어짐 (XML, 몇몇의 NoSQL system 등) ~ 구조와 데이터가 함께 서술되는 형태
 
 
-
-
-
+### ★ Schemas(스키마) vs Instance(인스턴스)
+- Database Schema (intension or meta-data):
+  + DBMS의 카탈로그

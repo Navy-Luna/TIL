@@ -97,6 +97,35 @@
 
 (4) Support of multiple views of the data (데이터에 대한 다양한 뷰를 제공함)
 - 각각의 유저는 DBMS의 다른 뷰를 보게 된다.
-- 그래서 각 ㅇ
-ㅇㅠ저들은 
-ㅇㅠ저들은 ㅈ
+- 그래서 각 유저들은 자신이 원하는 관심사의 데이터를 볼 수 있다.
+- 보여줄 데이터와 안보여줄 데이터에 대한 구분. (동일 데이터에 대해 다른 유저는 보지 못하게 할 수 있다.)
+
+(5) Sharing of data and multiuser transaction processing
+- 동시에 여러 유저가 DB에서 검색을 하고 내용 수정을 할 수 있음.
+- Transaction: DB 접속을 포함하여 명령어를 실행하여서 프로그램과 프로세서를 실행하는 것
+- ACID 만족해야함 (atomicity, consistency, isolation, durability)
+
+★ ACID: 데이터베이스 transaction(**트랜잭션이라는 것은 데이터베이스 내에 서 하나의 논리적 기능을 수행하기 위해 행해지는 작업의 단위 또는 한번에 사용되는 하나 이상의 쿼리를 모아 놓은 쪼갤 수 없는 작업의 논리적인 단위**)이 안전하게 수행된다는 것을 보장하기 위한 성질 -> [데이터베이스 트렌젝션 ACID란?](https://covenant.tistory.com/85)
+
+- 요즘은 OLTP(Online Transaction Processing) 이 데이터베이스에서 가장 핫하다. - 초당 수만개의 transaction처리가 동시에 처리가 가능하다.
+
+## 4. Advantages of using the DB approach (DB 사용의 장점)
+1. Controlling redundancy (중복을 제어함)
+2. Restricting unauthorized access (권한이 없는 접근을 제한함)
+3. Providing persistent storage for program objects (객체의 영속적 저장)
+4. Providing storage structures for efficient query processing (효율적 질의 처리를 위한 저장 구조 제공)
+5. 그외 다수..
+
+## 5. When Not to Use a DBMS (DBMS를 사용하면 안되는 경우)
+1. overhead가 크게 든다: 초기 하드웨어, 소프트웨어 등의 투자비용 / 데이터 처리를 위한 generality / 그 외 복구, 보안 등의 추가적인 overhead
+2. DBMS가 굳이 필요 없는 경우: 간단한 데이터의 저장, 다수의 접속이 필요 없는 경우
+3. DBMS를 돌릴 수 없을 때: 임베디드 시스템 같은곳에 DB 운용하는건 미친짓임
+4. 일반적인 목적의 DBMS가 필수적이지 않은 경우: real-time한 요구를 하는 일부 소프트웨어 / 모델링 한계로 복잡한 데이터를 다루기 어려운 경우 / 특별한 목적으로 사용해야할 
+
+
+----------------------------------------------------------
+# Chapter2. Database System Concepts and Architecture
+## Data Model, schemas, and instances
+### ★ Data Models (데이터 모델)
+
+

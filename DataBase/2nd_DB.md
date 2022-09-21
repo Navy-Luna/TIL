@@ -88,4 +88,11 @@
   + 하지만 최근에 나온 시스템 (NoSQL: Mongo DB, Cassandra, Radis)의 경우에는 metadata가 필요X: 데이터에대한 정의가 구조 자체에 저장되어있다. 그래서 그것 자체로 self-describing 되어 있음.
 
 (2) Program-data indempendence (프로그램과 데이터간의 Insulation): DBMS 접근 program의 변경 없이 Data structure와 storage organization을 바꾸는 것은 가능하다. DBMS의 궁극적인 목적으로 응용프로그램이 데이터에 종속되지 않는 것을 의미한다. [참고자료](https://needjarvis.tistory.com/287)
-File 기반 처리에서는 
+- 파일 기반 처리에서는 만약 프로그램에 의해 접근될 수 있는 파일의 구조가 변경될 경우, 프로그램도 함께 변경해야한다.
+
+(3) Data abstraction (데이터 추상화: 추상화란 핵심적인 개념 또는 기능을 추려낸 것): program-data와 program-operation(on object) (프로그램-데이터와 프로그램-연산) 이 독립적이라는 특징이다. 데이터를 여러개를 하나로 묶어서 취급한다던가하며 데이터를 추상화시킬 수 있음. 세세한 개체로부터 중요한 특징을 분리하고 문제해결에 중요하지 않은 부분은 제거하고 핵심적인 속성만 기술한다.
+- Informal definition of 'data model'([추상화&데이터모델 참고자료](https://m.blog.naver.com/zxcvb8842/221840470281)/[추상화&데이터모델 참고자료2](https://velog.io/@brian_kim/DB-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B6%94%EC%83%81%ED%99%94-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%AA%A8%EB%8D%B8)): a type of data abstraction (데이터 추상화의 한 종류)
+- 저장소에 공간에 대한 세부적인 정보는 숨긴다던가 DB의 개념적인 뷰만 유저에게 제공한다던가 하는 것도 모두 추상화의 예시이다.
+- 우리는 데이터가 어떻게 저장되고 접근되는지 자세하게 알 필요가 없음.(추상화 되어있기 때문에 우린 그것만 보고 사용하면 됨! 그게 편함)
+
+(4) 

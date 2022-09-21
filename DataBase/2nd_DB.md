@@ -87,5 +87,5 @@
 - Catalog (카탈로그): 특정 DB에 대한 정보들을 기록하고 저장한 것 [참고링크](https://coding-factory.tistory.com/225)   
   + 하지만 최근에 나온 시스템 (NoSQL: Mongo DB, Cassandra, Radis)의 경우에는 metadata가 필요X: 데이터에대한 정의가 구조 자체에 저장되어있다. 그래서 그것 자체로 self-describing 되어 있음.
 
-(2) Program-data indempendence (프로그램과 데이터간의 Insulation)
-
+(2) Program-data indempendence (프로그램과 데이터간의 Insulation): DBMS 접근 program의 변경 없이 Data structure와 storage organization을 바꾸는 것은 가능하다. DBMS의 궁극적인 목적으로 응용프로그램이 데이터에 종속되지 않는 것을 의미한다. [참고자료](https://needjarvis.tistory.com/287)
+File 기반 처리에서는 

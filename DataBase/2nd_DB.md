@@ -126,6 +126,36 @@
 ----------------------------------------------------------
 # Chapter2. Database System Concepts and Architecture
 ## Data Model, schemas, and instances
-### ★ Data Models (데이터 모델)
+### ★ Data Models (데이터 모델): 위에 Data Abstraction의 참고자료를 보면 됨
+- 데이터 추상화 지원
+- 실제세계를 어떻게 데이터로 표현할지를 결정 (현실 세계의 요소를 인간과 컴퓨터가 이해할 수 있도록 표현)
+- 예를 들어 관계형 데이터 모델, 객체 관계형 데이터 모델 등 존재
+- 데이터베이스의 구조(데이터의 타입, 데이터간의 관계, 제약조건)를 명시하기 위한 개념들의 집합
+  + structure (구조)
+  + operation (연산: 검색/업데이트) - 이런 구조를 조작하기 위한 - 유저 정의 연산 / 기본 연산 존재
+  + constraints (제약조건) - 데이터베이스가 지켜야할..
+
+- "Construct"은 DB 구조 정의
+- Construct(구성요소?)
+  + elements(data types)
+  + group of elements(=entity, record)
+  + relation between groups
+
+- 제약조건은 타당한 데이터를 받아들이기 위해서 필요하다.
+
+### ★ Categories of Data Models (데이터 모델의 종류)
+1. Conceptual (high-level, semantic) data models, 개념적 데이터 모델) data models:
+- 인간이 이해할 수 있게 entity, attribute, relationship의 개념을 제공함으로써 정보구조를 표현한다.
+- entity-based (예를 들어 ER model) 혹은 object-based 데이터 모델이라고도 부른다.
+2. Physical (low-level, internal, 물리적 데이터 모델) data models:
+- 실제로 데이터가 컴퓨터 저장소에 저장되는 방식에 대한 개념을 제공한다.
+3. Implementation (representational, logical, 논리적 데이터 모델) data models:
+- 개념적 모델을 컴퓨터가 이해할 수 있도록 변환한 논리적 모델
+- 많은 상업 DBMS에서 활용한다.(관계형 데이터 모델이라던가 네트워크 모델이라던가)
+4. (New!) Self-Describing data model:
+- data value와 data에 대한 기술이 함께 이루어짐 (XML, 몇몇의 NoSQL system 등) ~ 구조와 데이터가 함께 서술되는 형태
+
+
+
 
 

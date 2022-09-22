@@ -211,3 +211,90 @@
 
 - Logical data Independence: conceptual(=logical) 스키마의 변경에도 external 스키마 혹은 관련된 응용 프로그램을 변경할 필요가 없다.
 - Physical data Independence: internal(=physical) 스키마의 변경에도 conceptual(=logical) 스키마의 변경이 필요가 없다.
+
+---------------------------------------------------------
+# Lab#2 Interaction with SQL\*Plus & SQL Developer
+- SQL\*Plus는 Oracle DBMS에 의해 설치됨. SQL을 실행시킬 수 있도록 해준다.
+- SQL Developer는 콘솔환경의 활동은 동일하게 할 수 있지만 GUI형태로 좀 더 쉽게 눈에 들어오게 해줌
+
+#### 1. oracle19 접속
+```sql
+// 시스템 계정 접속
+sqlplus sys/oracle as sysdba;
+sqlplus "/" as sysdba;
+
+// 그냥 로그인하기
+sqlplus;
+
+// 한꺼번에 로그인
+sqlplus "이름/비번"
+```
+#### 2. 현재 유저 정보 표시
+```sql
+show user;
+```
+#### 3. 오라클 학습용 계정인 hr계정 풀기/잠그기(시스템 계정 로그인 필요->계정 관련은 모두 시스템 계정)
+```sql
+// 비밀번호를 설정해주고 싶으면 'identified by 비밀번호' 붙이면 됨
+alter user hr by account unlock;
+alter user hr identified by hr account unlock;
+alter user hr by account lock;
+```
+#### 4. 타계정 로그인
+```sql
+connect ID/Pass;
+conn ID/Pass;
+```
+#### 5. 테이블 정보 보여줌
+```sql
+// 이름과 타입, NULLABLE한지 보여준다.
+DESC 테이블명;
+```
+#### 6. 유저(스키마) 생성 - 시스템 계정 접속
+```sql
+CREATE USER 유저이름 IDENTIFIED by 비밀번호;
+```
+#### 7. 권한 주기 - 시스템 계정 접속
+```sql
+GRANT 권한 to 계정이름;
+// 모든 권한 수여
+GRANT ALL PRIVILEGES to 계정이름 IDENTIFIED by 비밀번호;
+// DB 스키마 접속 권한(Session)과 테이블 제작 권한 give
+GRANT create session, create table to university;
+```
+#### 8. 현재 계정 권한 확인
+```sql
+SELECT * FROM SESSION_PRIVS;
+```
+
+#### 9. 테이블 만들기
+```sql
+CREATE TABLE 테이블이름
+(
+  Label이름   타입
+);
+
+// 예시
+CREATE TABLE Student
+(
+  Name  VARCHAR(10),
+  Student_number  NUMBER
+);
+```
+#### 10. 변경사항 저장
+```sql
+// 변경 이후에 반영할 것이면 반드시 commit해서 DB에 밀어넣어 줘야함
+commit;
+```
+#### 11. 데이터(행) 집어넣기
+```sql
+// 숫자는 그냥 표시하고 문자는 ''로 둘러싸서 넣기
+INSERT INTO 테이블이름 VALUES ( );
+```
+#### 12. 데이터 조회
+```sql
+SELECT * FROM 테이블이름; // 모든 데이터 가져오기
+SELECT 열1, 열2 .. FROM 테이블이름; // 특정 열 가져오기
+SELECT 열1, 열2 .. FROM 테이블이름 By 열이름 ASC; // 오름차순 가져오기
+SELECT count(label이름) FROM 테이블이름; // 특정 레이블의 항목 수 출력
+```

@@ -84,26 +84,26 @@
 ## 3. Main Characteristics of the database approach
 ### ★ Main Characteristics of the DB Appproach
 (1) "Self-describing" nature of a DB system (자기 서술적 속성(자기 자신에 대한 정보를 저장하고 관리하는 속성)을 가지는 DB system): DB system은 DB 그 자체를 의미할 뿐만이 아니라 DB의 structure, types, and contraints 완전한 정의(혹은 서술)을 의미한다.
-- Catalog (카탈로그): 특정 DB에 대한 정보들을 기록하고 저장한 것 [참고링크](https://coding-factory.tistory.com/225)   
+  - Catalog (카탈로그): 특정 DB에 대한 정보들을 기록하고 저장한 것 [참고링크](https://coding-factory.tistory.com/225)   
   + 하지만 최근에 나온 시스템 (NoSQL: Mongo DB, Cassandra, Radis)의 경우에는 metadata가 필요X: 데이터에대한 정의가 구조 자체에 저장되어있다. 그래서 그것 자체로 self-describing 되어 있음.
 
-(2) Program-data indempendence (프로그램과 데이터간의 Insulation): DBMS 접근 program의 변경 없이 Data structure와 storage organization을 바꾸는 것은 가능하다. DBMS의 궁극적인 목적으로 응용프로그램이 데이터에 종속되지 않는 것을 의미한다. [참고자료](https://needjarvis.tistory.com/287)
-- 파일 기반 처리에서는 만약 프로그램에 의해 접근될 수 있는 파일의 구조가 변경될 경우, 프로그램도 함께 변경해야한다.
+(2) Program-data independence (프로그램과 데이터간의 Insulation): DBMS 접근 program의 변경 없이 Data structure와 storage organization을 바꾸는 것은 가능하다. DBMS의 궁극적인 목적으로 응용프로그램이 데이터에 종속되지 않는 것을 의미한다. [참고자료](https://needjarvis.tistory.com/287)
+  - 파일 기반 처리에서는 만약 프로그램에 의해 접근될 수 있는 파일의 구조가 변경될 경우, 프로그램도 함께 변경해야한다.
 
 (3) Data abstraction (데이터 추상화: 추상화란 핵심적인 개념 또는 기능을 추려낸 것): program-data와 program-operation(on object) (프로그램-데이터와 프로그램-연산) 이 독립적이라는 특징이다. 데이터를 여러개를 하나로 묶어서 취급한다던가하며 데이터를 추상화시킬 수 있음. 세세한 개체로부터 중요한 특징을 분리하고 문제해결에 중요하지 않은 부분은 제거하고 핵심적인 속성만 기술한다.
-- Informal definition of 'data model'([추상화&데이터모델 참고자료](https://m.blog.naver.com/zxcvb8842/221840470281)/[추상화&데이터모델 참고자료2](https://velog.io/@brian_kim/DB-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B6%94%EC%83%81%ED%99%94-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%AA%A8%EB%8D%B8)): a type of data abstraction (데이터 추상화의 한 종류)
-- 저장소에 공간에 대한 세부적인 정보는 숨긴다던가 DB의 개념적인 뷰만 유저에게 제공한다던가 하는 것도 모두 추상화의 예시이다.
-- 우리는 데이터가 어떻게 저장되고 접근되는지 자세하게 알 필요가 없음.(추상화 되어있기 때문에 우린 그것만 보고 사용하면 됨! 그게 편함)
+  - Informal definition of 'data model'([추상화&데이터모델 참고자료](https://m.blog.naver.com/zxcvb8842/221840470281)/[추상화&데이터모델 참고자료2](https://velog.io/@brian_kim/DB-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B6%94%EC%83%81%ED%99%94-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%AA%A8%EB%8D%B8)): a type of data abstraction (데이터 추상화의 한 종류)
+  - 저장소에 공간에 대한 세부적인 정보는 숨긴다던가 DB의 개념적인 뷰만 유저에게 제공한다던가 하는 것도 모두 추상화의 예시이다.
+  - 우리는 데이터가 어떻게 저장되고 접근되는지 자세하게 알 필요가 없음.(추상화 되어있기 때문에 우린 그것만 보고 사용하면 됨! 그게 편함)
 
 (4) Support of multiple views of the data (데이터에 대한 다양한 뷰를 제공함)
-- 각각의 유저는 DBMS의 다른 뷰를 보게 된다.
-- 그래서 각 유저들은 자신이 원하는 관심사의 데이터를 볼 수 있다.
-- 보여줄 데이터와 안보여줄 데이터에 대한 구분. (동일 데이터에 대해 다른 유저는 보지 못하게 할 수 있다.)
+  - 각각의 유저는 DBMS의 다른 뷰를 보게 된다.
+  - 그래서 각 유저들은 자신이 원하는 관심사의 데이터를 볼 수 있다.
+  - 보여줄 데이터와 안보여줄 데이터에 대한 구분. (동일 데이터에 대해 다른 유저는 보지 못하게 할 수 있다.)
 
 (5) Sharing of data and multiuser transaction processing
-- 동시에 여러 유저가 DB에서 검색을 하고 내용 수정을 할 수 있음.
-- Transaction: DB 접속을 포함하여 명령어를 실행하여서 프로그램과 프로세서를 실행하는 것
-- ACID 만족해야함 (atomicity, consistency, isolation, durability)
+  - 동시에 여러 유저가 DB에서 검색을 하고 내용 수정을 할 수 있음.
+  - Transaction: DB 접속을 포함하여 명령어를 실행하여서 프로그램과 프로세서를 실행하는 것
+  - ACID 만족해야함 (atomicity, consistency, isolation, durability)
 
 ★ ACID: 데이터베이스 transaction(**트랜잭션이라는 것은 데이터베이스 내에 서 하나의 논리적 기능을 수행하기 위해 행해지는 작업의 단위 또는 한번에 사용되는 하나 이상의 쿼리를 모아 놓은 쪼갤 수 없는 작업의 논리적인 단위**)이 안전하게 수행된다는 것을 보장하기 위한 성질 -> [데이터베이스 트렌젝션 ACID란?](https://covenant.tistory.com/85)
 
@@ -145,17 +145,69 @@
 
 ### ★ Categories of Data Models (데이터 모델의 종류)
 1. Conceptual (high-level, semantic) data models, 개념적 데이터 모델) data models:
-- 인간이 이해할 수 있게 entity, attribute, relationship의 개념을 제공함으로써 정보구조를 표현한다.
-- entity-based (예를 들어 ER model) 혹은 object-based 데이터 모델이라고도 부른다.
+  - 인간이 이해할 수 있게 entity, attribute, relationship의 개념을 제공함으로써 정보구조를 표현한다.
+  - entity-based (예를 들어 ER model) 혹은 object-based 데이터 모델이라고도 부른다.
 2. Physical (low-level, internal, 물리적 데이터 모델) data models:
-- 실제로 데이터가 컴퓨터 저장소에 저장되는 방식에 대한 개념을 제공한다.
+  - 실제로 데이터가 컴퓨터 저장소에 저장되는 방식에 대한 개념을 제공한다.
 3. Implementation (representational, logical, 논리적 데이터 모델) data models:
-- 개념적 모델을 컴퓨터가 이해할 수 있도록 변환한 논리적 모델
-- 많은 상업 DBMS에서 활용한다.(관계형 데이터 모델이라던가 네트워크 모델이라던가)
+  - 개념적 모델을 컴퓨터가 이해할 수 있도록 변환한 논리적 모델
+  - 많은 상업 DBMS에서 활용한다.(관계형 데이터 모델이라던가 네트워크 모델이라던가)
 4. (New!) Self-Describing data model:
-- data value와 data에 대한 기술이 함께 이루어짐 (XML, 몇몇의 NoSQL system 등) ~ 구조와 데이터가 함께 서술되는 형태
+  - data value와 data에 대한 기술이 함께 이루어짐 (XML, 몇몇의 NoSQL system 등) ~ 구조와 데이터가 함께 서술되는 형태
 
 
 ### ★ Schemas(스키마) vs Instance(인스턴스)
 - Database Schema (intension or meta-data):
-  + DBMS의 카탈로그
+  + DBMS의 카탈로그 내부에 저장되어있는 "데이터베이스의 Description"
+  + 데이터 구조와 제약조건에 관한 전반적인 명세를 기록한 메타데이터 집합
+  + 데이터 베이스의 디자인을 구체적으로 명시하지만 잘 안바뀜
+  + 가끔 특정 목적으로 스키마를 변화시킴(Schema evolution)
+  + Schema Construct: 스키마 내부에 존재하는 객체/구성요소
+
+- Database State (extension or instance)
+  + 특정 순간에 데이터베이스에 저장되어 있는 실제 데이터
+  + 데이터베이스의 데이터 collection
+  + Initial Database State: 처음 DBMS에 의해 로드된 데이터베이스의 state (초기 데이터)
+  + Valid State: 데이터베이스의 구조와 제약조건을 따르는 상태 -> 데이터베이스의 모든 State은 Vaild한 상태를 유지해야함
+
+## Three-Schema Architecture and Data Independence
+[\[DB기초\]스키마란 무엇인가?](https://coding-factory.tistory.com/216)
+### ★ Three-Schema Architecture
+  - 앞에서 배운 3가지 database approach를 따름
+    + 카탈로그를 이용한 self-describing
+    + program-data와 program-operation의 독립성
+    + 여러 사용자에게 view를 제공
+  - 데이터베이스 조직 이해에 good
+  - 사용자의 관점에 따라 3가지 스키마로 나뉜다.
+  - 실제 데이터베이스와 유저의 사용을 분리시키는데 목적
+
+#### 1. External (=view level) schema (at the external level): 외부 스키마
+  - 사용자나 응용프로그래머가 각 개인의 입장에서 필요로 하는 데이터베이스의 논리적 구조를 정의
+  - 하나의 데이터베이스에 여러 외부 스키마가 존재할 수 있고 하나의 스키마를 여러 사용자나 응용프로그램이 사용가능하다.
+  - 일부 논리적 부분만을 설명하므로 sub schema라고도 한다.
+  - 내가 사용하고자 하는 부분을 다른 사용자로부터 숨길 수 있다. (Concurrency, independency 보장) -> 같은 DB에 대해 다양한 관점 정의
+
+#### 2. Conceptual (=logical) schema (at the conceptual level): 개념 스키마
+  - 개념 스키마는 데이터베이스의 전체적인 논리적 구조
+  - 모든 응용 프로그램이나 사용자들이 필요로 하는 데이터의 구조/제약조건를 종합한 조직 전체의 데이터베이스로 하나만 존재 (말이 데이터베이스인거지 실제 DB말하는건 아님ㅋㅋ 외부 수준에서 요구된 사용자들     입장에서 필요로하는 데이터베이스 논리 구조를 하나로 취합한 느낌이라고 보면 됨 -> 요구서류가 모이는 장소라고 보면 될듯)
+  - 기관이나 조직체 관점에서의 데이터 정의
+  - 개념적(ex. ER)모델 혹은 논리적(ex.관계형)데이터 모델을 사용
+
+#### 3. Internal (=physical) schema (at the internal level)
+  - 물리 저장장치 관점에서 본 데이터베이스 구조
+  - 실제 데이터가 저장될 레코드의 물리적 구조 정의
+  - 데이터 저장 구조나 접근 경로에 대한 묘사
+  - physical model 활용
+  - 시스템 개발자 혹은 시스템 프로그래머의 관점임
+
+### ★ Mapping
+ - 각각의 수준의 스키마들은 그들의 요구와 데이터를 전달전달할 필요가 있음!
+ - 스키마는 데이터의 기술이라는 것을 기억! 실제 데이터는 물리적인 영역에 저장되어있다.
+ - 스키마 수준간의 매핑정보를 기반으로 external레벨에서부터 시작한 요청을 전달전달하여 DB로부터 데이터를 뽑아내야함
+ - internal level에 도달하게 되면 요구된 정보를 internal level에서 사용자가 이해할 수 있는 형태로 reformatting하여 다시 전달함(웹페이지라던가..)
+ 
+### ★ Data independence (데이터 독립성)
+하위 레벨에서의 스키마의 변화는 상위 레벨의 스키마에 영향을 미치지 않는다. (변경시킬 필요가 없다.) 하위 수준에서의 스키마가 변경되더라도 스키마 사이의 "매핑" 정보만 변경시켜주면 되기때문이다. 이를 통해서 데이터는 완전한 독립성을 유지할 수 있다.
+
+- Logical data Independence: conceptual(=logical) 스키마의 변경에도 external 스키마 혹은 관련된 응용 프로그램을 변경할 필요가 없다.
+- Physical data Independence: internal(=physical) 스키마의 변경에도 conceptual(=logical) 스키마의 변경이 필요가 없다.

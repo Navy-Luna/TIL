@@ -73,6 +73,30 @@ Tuple calculus로부터 나왔으며 본래 SEQUEL로 불렸음. IBM에서 Exper
     );
 ```
 
-## 2. SPECIFYING CONSTRAINTS IN SQL
+## 2. SPECIFYING CONSTRAINTS IN SQL (SQL에서 제약조건 설정하기)
+앞에서 공부한 대표적인 3가지 constraints를 실제로 sql로 구현해볼것임.   
+Key constraint -> PRIMARY KEY / Entity constraint -> NOT NULL / Referential integrity constraints -> FOREIGN KEY
 
+**\[Specifying "Attribute" Constraints\]**   
+- Default \<value\> clause
+- NULL : NULL 허용하지 않으려면 NOT NULL를 사용하면 된다.
+- CHECK clause : 예를 들어 Dnumber INT NOT NULL CHECK (Dnumber > 0 and Dnumber < 10) 과 같이 CHECK 뒤에 Attribution의 제약조건 설정 가능
 
+**\[Specifying "Key" Constraints\]**
+- PRIMARY KEY clause : 하나 혹은 그 이상으로 기본키 설정 가능 E.g) Dnumber INT PRIMARY KEY / PRIMARY KEY(State, Number) 과 같이 사용가능하다.
+- UNIQUE clause : 후보키이자 2차키로서 사용 E.g) Dnumber VARCHAR2 UNIQUE / UNIQUE(State, Number)
+
+**\[Referential Integrity\]**
+- FOREIGN KEY clause : 기본적으로 데이터가 violation한 상황은 update(insert/delete)를 reject 시킴
+- reject 대신에 SET NULL (아예 NULL하게 만들기) 과 CASCADE option을 사용 가능하다. SET DEFAULT도 있지만 Oracle은 지원하지않음
+
+## 3. BASIC RETRIEVAL QUERIES IN SQL (일반적인 SQL에서의 검색 쿼리)
+```SQL
+  -- Basic SQL Query Block
+  SELECT  <attribute list>
+  FROM    <relation list>
+  [WHERE  <condition>] -- 선택적 조건
+  [GROUP BY <attribute list>] -- 결과에서 subgroup을 만들어내기위해 사용한다.
+  [HAVING   <condition>] -- group 중에 조건을 걸어둘때 group에 대한 조건 설정
+  [ORDER BY <attribute list> [DESC]; -- 정렬기준 설정, 오름차순 기본
+```

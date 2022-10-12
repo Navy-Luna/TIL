@@ -100,3 +100,7 @@ Key constraint -> PRIMARY KEY / Entity constraint -> NOT NULL / Referential inte
   [HAVING   <condition>] -- group 중에 조건을 걸어둘때 group에 대한 조건 설정
   [ORDER BY <attribute list> [DESC]; -- 정렬기준 설정, 오름차순 기본
 ```
+
+**\[Ambiguous Attribution Names\]**   
+Query문을 작성하다보면 서로 다른 relation에 있는 동일한 Attribution을 가져와야한다거나 같은 relation을 두번 참고하면서 이름이 겹칠 수 있음   
+\-> 그때 사용하는게 (1) Fully-qualified 방식 그리고 (2) Aliasing and Renaming 방식이 있다.

@@ -68,7 +68,7 @@
 - 요구사항 분석과 구체화
 2. Conceptual design (for easily being transformed into a database implementation)
 - 개념 스키마 모델링
-- 과정요구사항들을 쉽게 데이베이스에 구현하기위해서 직관적이해가 가능한 형태로 표현하기 위한 단계
+- 과정요구사항들을 쉽게 데이터베이스에 구현하기위해서 직관적이해가 가능한 형태로 표현하기 위한 단계
 - 주로 entity와 그들간의 relation을 표현하기 위해서 entity-relation diagram (ER-Diagram)을 사용하며 ER-Diagram을 이용하여 조직과 사용자들에게 어떠한 데이터들이 중요한지 나타내기위해 사용한다.
 3. Logical design (for a data model implemented in a DBMS)
 - DBMS에 data model을 구현하기 위한 logical design
